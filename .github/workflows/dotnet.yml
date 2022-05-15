@@ -39,8 +39,16 @@ jobs:
         target: "/home/stathisthemagic/githubdeploy/tmp"
     - name: Try and clean previous
       continue-on-error: true
-      run: rm -R /home/stathisthemagic/public_html/pathmaker/*
+      run: rm -R /home/stathisthemagic/public_html/pathmaker/
     - name: Deploy new
-      run: mv /home/stathisthemagic/githubdeploy/tmp/bin/Debug/net6.0/publish/wwwroot/* /home/stathisthemagic/public_html/pathmaker
+      continue-on-error: true
+      run: mv /home/stathisthemagic/githubdeploy/tmp/bin/Debug/net6.0/publish/wwwroot/ /home/stathisthemagic/public_html/pathmaker
     - name: Clear temporary files
-      run: rm -R /home/stathisthemagic/githubdeploy/tmp/*
+      continue-on-error: true
+      run: rm -R /home/stathisthemagic/githubdeploy/tmp/
+    - name: Set permissions group
+      continue-on-error: true
+      run: chgrp -R deploymentgroup /home/stathisthemagic/public_html/pathmaker/
+    - name: Set permissions
+      continue-on-error: true
+      run: chmod -R 777 /home/stathisthemagic/public_html/pathmaker/*
