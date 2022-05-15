@@ -40,4 +40,6 @@ jobs:
     - name: Clean previous
       run: rm -R /home/stathisthemagic/public_html/pathmaker/*
     - name: Deploy new
-      run: mv /home/stathisthemagic/githubdeploy/tmp/* /home/stathisthemagic/public_html/pathmaker
+      run: mv /home/stathisthemagic/githubdeploy/tmp/bin/Debug/net6.0/publish/wwwroot/* /home/stathisthemagic/public_html/pathmaker
+    - name: Clear temporary files
+      run: rm -R /home/stathisthemagic/githubdeploy/tmp/*
