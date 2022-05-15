@@ -41,8 +41,7 @@ jobs:
       continue-on-error: true
       run: rm -R "/home/stathisthemagic/public_html/pathmaker/"
     - name: Deploy new
-      continue-on-error: true
-      run: mv "/home/stathisthemagic/githubdeploy/tmp/bin/Debug/net6.0/publish/wwwroot/*" "/home/stathisthemagic/public_html/pathmaker"
+      run: mv "/home/stathisthemagic/githubdeploy/tmp/bin/Debug/net6.0/publish/wwwroot/" "/home/stathisthemagic/public_html/pathmaker"
     - name: Clear temporary files
       continue-on-error: true
       run: rm -R "/home/stathisthemagic/githubdeploy/tmp/"
@@ -51,4 +50,4 @@ jobs:
       run: chgrp -R deploymentgroup "/home/stathisthemagic/public_html/pathmaker/"
     - name: Set permissions
       continue-on-error: true
-      run: chmod -R 777 "/home/stathisthemagic/public_html/pathmaker/*"
+      run: chmod -R 777 "/home/stathisthemagic/public_html/pathmaker/"
