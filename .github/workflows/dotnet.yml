@@ -45,7 +45,7 @@ jobs:
         username: githubdeploy
         password: ${{ secrets.SSHPASS }}
         port: 22
-        script: rm -R "/home/stathisthemagic/public_html/pathmaker/*"
+        script: rm -r /home/stathisthemagic/public_html/pathmaker/*
     - name: Move Files
       uses: appleboy/ssh-action@master
       with:
@@ -53,7 +53,7 @@ jobs:
         username: githubdeploy
         password: ${{ secrets.SSHPASS }}
         port: 22
-        script: mv "/home/stathisthemagic/githubdeploy/tmp/bin/Debug/net6.0/publish/wwwroot/*" "/home/stathisthemagic/public_html/pathmaker/"
+        script: mv /home/stathisthemagic/githubdeploy/tmp/bin/Debug/net6.0/publish/wwwroot/* /home/stathisthemagic/public_html/pathmaker/
     - name: Remove temporary files
       uses: appleboy/ssh-action@master
       with:
@@ -61,12 +61,4 @@ jobs:
         username: githubdeploy
         password: ${{ secrets.SSHPASS }}
         port: 22
-        script: rm -R "/home/stathisthemagic/githubdeploy/tmp/*"
-    - name: Set permissions
-      uses: appleboy/ssh-action@master
-      with:
-        host: ${{ secrets.SSH_HOST }}
-        username: githubdeploy
-        password: ${{ secrets.SSHPASS }}
-        port: 22
-        script: chgrp -R deploymentgroup "/home/stathisthemagic/public_html/pathmaker/" ; chmod -R 777 "/home/stathisthemagic/public_html/pathmaker/"
+        script: rm -r /home/stathisthemagic/githubdeploy/tmp/*
