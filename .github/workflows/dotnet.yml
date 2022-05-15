@@ -40,6 +40,8 @@ jobs:
     - name: Try and clean previous
       continue-on-error: true
       run: rm -R "/home/stathisthemagic/public_html/pathmaker/"
+    - name: List files
+      run: ls "/home/stathisthemagic/githubdeploy/tmp/"
     - name: Deploy new
       run: mv "/home/stathisthemagic/githubdeploy/tmp/bin/Debug/net6.0/publish/wwwroot/" "/home/stathisthemagic/public_html/pathmaker"
     - name: Clear temporary files
