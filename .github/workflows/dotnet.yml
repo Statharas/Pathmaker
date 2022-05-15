@@ -38,7 +38,7 @@ jobs:
         source: "bin/Debug/net6.0/publish/wwwroot/*"
         target: "/home/stathisthemagic/githubdeploy/tmp"
     - name: Clean previous
-      run: rm -R /home/stathisthemagic/public_html/pathmaker/*
+      run: rm -R /home/stathisthemagic/public_html/pathmaker/* 2>/dev/null
     - name: Deploy new
       run: mv /home/stathisthemagic/githubdeploy/tmp/bin/Debug/net6.0/publish/wwwroot/* /home/stathisthemagic/public_html/pathmaker
     - name: Clear temporary files
