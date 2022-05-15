@@ -6,7 +6,10 @@ namespace Pathmaker
     {
         public static event Action? Refresh;
         public static event Action? OnActiveCharacterChange;
-        public static List<Character> Characters { get; private set; } = new List<Character> { new Character() };
+
+        public static List<Character> Characters { get; private set; } =
+            new List<Character> { new Character(), new Character() };
+
         public static Character? ActiveCharacter = Characters[0];
 
         public static string CharactersSerialized()
