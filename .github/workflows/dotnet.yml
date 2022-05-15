@@ -37,19 +37,39 @@ jobs:
         password: ${{ secrets.SSHPASS }}
         source: "bin/Debug/net6.0/publish/wwwroot/*"
         target: "/home/stathisthemagic/githubdeploy/tmp"
-    - name: Try and clean previous
+    - name: Clean Previous
+      uses: appleboy/ssh-action@master
       continue-on-error: true
-      run: rm -R "/home/stathisthemagic/public_html/pathmaker/"
-    - name: List files
-      run: ls "/home/stathisthemagic/githubdeploy/tmp/"
-    - name: Deploy new
-      run: mv "/home/stathisthemagic/githubdeploy/tmp/bin/Debug/net6.0/publish/wwwroot/" "/home/stathisthemagic/public_html/pathmaker"
-    - name: Clear temporary files
+      with:
+        host: ${{ secrets.SSH_HOST }}
+        username: githubdeploy
+        password: ${{ secrets.SSHPASS }}
+        port: 22
+        script: rm -R "/home/stathisthemagic/public_html/pathmaker/"
+    - name: Move Files
+      uses: appleboy/ssh-action@master
       continue-on-error: true
-      run: rm -R "/home/stathisthemagic/githubdeploy/tmp/"
-    - name: Set permissions group
+      with:
+        host: ${{ secrets.SSH_HOST }}
+        username: githubdeploy
+        password: ${{ secrets.SSHPASS }}
+        port: 22
+        script: mv "/home/stathisthemagic/githubdeploy/tmp/bin/Debug/net6.0/publish/wwwroot/" "/home/stathisthemagic/public_html/pathmaker"
+    - name: Remove temporary files
+      uses: appleboy/ssh-action@master
       continue-on-error: true
-      run: chgrp -R deploymentgroup "/home/stathisthemagic/public_html/pathmaker/"
+      with:
+        host: ${{ secrets.SSH_HOST }}
+        username: githubdeploy
+        password: ${{ secrets.SSHPASS }}
+        port: 22
+        script: rm -R "/home/stathisthemagic/githubdeploy/tmp/"
     - name: Set permissions
+      uses: appleboy/ssh-action@master
       continue-on-error: true
-      run: chmod -R 777 "/home/stathisthemagic/public_html/pathmaker/"
+      with:
+        host: ${{ secrets.SSH_HOST }}
+        username: githubdeploy
+        password: ${{ secrets.SSHPASS }}
+        port: 22
+        script: chgrp -R deploymentgroup "/home/stathisthemagic/public_html/pathmaker/" ; chmod -R 777 "/home/stathisthemagic/public_html/pathmaker/"
