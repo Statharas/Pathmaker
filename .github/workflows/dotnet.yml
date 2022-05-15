@@ -32,7 +32,7 @@ jobs:
       uses: appleboy/scp-action@master
       with:
         host: ${{ secrets.SSH_HOST }}
-        username: ${{ secrets.SSH_USER }}
+        username: githubdeploy
         port: 22
         password: ${{ secrets.SSHPASS }}
         source: "bin/Debug/net6.0/publish/wwwroot/*"
@@ -42,10 +42,10 @@ jobs:
       run: rm -R "/home/stathisthemagic/public_html/pathmaker/"
     - name: Deploy new
       continue-on-error: true
-      run: mv "/home/stathisthemagic/githubdeploy/tmp/bin/Debug/net6.0/publish/wwwroot/" "/home/stathisthemagic/public_html/pathmaker"
+      run: mv "/home/stathisthemagic/githubdeploy/tmp/bin/Debug/net6.0/publish/wwwroot/*" "/home/stathisthemagic/public_html/pathmaker"
     - name: Clear temporary files
       continue-on-error: true
-      run: rm -R "/home/stathisthemagic/${{ secrets.SSH_USER }}/tmp/"
+      run: rm -R "/home/stathisthemagic/githubdeploy/tmp/"
     - name: Set permissions group
       continue-on-error: true
       run: chgrp -R deploymentgroup "/home/stathisthemagic/public_html/pathmaker/"
