@@ -42,10 +42,10 @@ jobs:
       run: rm -R /home/stathisthemagic/public_html/pathmaker/
     - name: Deploy new
       continue-on-error: true
-      run: mv /home/stathisthemagic/githubdeploy/tmp/bin/Debug/net6.0/publish/wwwroot/ /home/stathisthemagic/public_html/pathmaker
+      run: mv /home/stathisthemagic/${{ secrets.SSH_USER }}/tmp/bin/Debug/net6.0/publish/wwwroot/ /home/stathisthemagic/public_html/pathmaker
     - name: Clear temporary files
       continue-on-error: true
-      run: rm -R /home/stathisthemagic/githubdeploy/tmp/
+      run: rm -R /home/stathisthemagic/${{ secrets.SSH_USER }}/tmp/
     - name: Set permissions group
       continue-on-error: true
       run: chgrp -R deploymentgroup /home/stathisthemagic/public_html/pathmaker/
