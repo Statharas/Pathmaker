@@ -1,0 +1,75 @@
+﻿<div class="@Class">
+    <p> Points @CurrentPoints / @StartingPoints</p>
+    <div class="m-edit-box-item-12 m-edit-box-group">
+        <div class="m-edit-box-item-button-md">
+            <button class="button button-small @LowFantasy" @onclick="SetToLowFantasy">Low Fantasy</button>
+        </div>
+        <div class="m-edit-box-item-button-md">
+            <button class="button button-small @StandardFantasy" @onclick="SetToStandard">Standard Fantasy</button>
+        </div>
+        <div class="m-edit-box-item">
+            <button class="button button-small @HighFantasy" @onclick="SetToHigh">High Fantasy</button>
+        </div>
+        <div class="m-edit-box-item-button-md">
+            <button class="button button-small @EpicFantasy" @onclick="SetToEpic">Epic Fantasy</button>
+        </div>
+    </div>
+</div>
+
+@code {
+
+    [Parameter]
+    public Character Character { get; set; } = new();
+
+    [Parameter]
+    public bool Edit { get; set; } = true;
+    private string Class => Edit ? "" : "hidden-lg";
+    private int CurrentPoints => Character.Scores.Points;
+    private int StartingPoints => (int)Character.Scores.StartingPoints;
+    private string LowFantasy => Character.Scores.StartingPoints is AbilityScore.PointBuy.LowFantasy ? "button-primary" : "button-secondary";
+    private string StandardFantasy => Character.Scores.StartingPoints is AbilityScore.PointBuy.StandardFantasy ? "button-primary" : "button-secondary";
+    private string HighFantasy => Character.Scores.StartingPoints is AbilityScore.PointBuy.HighFantasy ? "button-primary" : "button-secondary";
+    private string EpicFantasy => Character.Scores.StartingPoints is AbilityScore.PointBuy.EpicFantasy ? "button-primary" : "button-secondary";
+    protected override Task OnInitializedAsync()
+    {
+        RegisterEvents();
+        Refresh();
+        return Task.CompletedTask;
+    }
+
+    void RegisterEvents()
+    {
+        Character.Scores.Strength.Refresh += Refresh;
+        Character.Scores.Dexterity.Refresh += Refresh;
+        Character.Scores.Constitution.Refresh += Refresh;
+        Character.Scores.Intelligence.Refresh += Refresh;
+        Character.Scores.Wisdom.Refresh += Refresh;
+        Character.Scores.Charisma.Refresh += Refresh;
+        Character.Scores.Refresh += Refresh;
+    }
+
+    private void SetToLowFantasy()
+    {
+        Character.Scores.SetToPointBuy(AbilityScore.PointBuy.LowFantasy);
+        Refresh();
+    }
+
+    private void SetToStandard()
+    {
+        Character.Scores.SetToPointBuy(AbilityScore.PointBuy.StandardFantasy);
+        Refresh();
+    }
+
+    private void SetToHigh()
+    {
+        Character.Scores.SetToPointBuy(AbilityScore.PointBuy.HighFantasy);
+        Refresh();
+    }
+
+    private void SetToEpic()
+    {
+        Character.Scores.SetToPointBuy(AbilityScore.PointBuy.EpicFantasy);
+        Refresh();
+    }
+    void Refresh() => InvokeAsync(StateHasChanged);
+}

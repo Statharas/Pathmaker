@@ -1,0 +1,100 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+
+	  <BlazorCacheBootResources>false</BlazorCacheBootResources>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="NewFolder1\**" />
+    <Compile Remove="NewFolder2\**" />
+    <Compile Remove="NewFolder3\**" />
+    <Compile Remove="NewFolder\**" />
+    <Content Remove="NewFolder1\**" />
+    <Content Remove="NewFolder2\**" />
+    <Content Remove="NewFolder3\**" />
+    <Content Remove="NewFolder\**" />
+    <EmbeddedResource Remove="NewFolder1\**" />
+    <EmbeddedResource Remove="NewFolder2\**" />
+    <EmbeddedResource Remove="NewFolder3\**" />
+    <EmbeddedResource Remove="NewFolder\**" />
+    <None Remove="NewFolder1\**" />
+    <None Remove="NewFolder2\**" />
+    <None Remove="NewFolder3\**" />
+    <None Remove="NewFolder\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\css\awesome\awesomeSheet.css" />
+    <None Include="wwwroot\css\awesome\awesomeSheet.min.css" />
+    <None Include="wwwroot\css\awesome\awesomeSheet.min.css.map" />
+    <None Include="wwwroot\css\awesome\LICENSE" />
+    <None Include="wwwroot\css\awesome\vendor.css" />
+    <None Include="wwwroot\css\awesome\vendor.min.css" />
+    <None Include="wwwroot\css\awesome\vendor.min.css.map" />
+    <None Include="wwwroot\css\fonts\fjalla-one\fjalla-one-regular.ttf" />
+    <None Include="wwwroot\css\fonts\fjalla-one\fjalla-one-regular.woff" />
+    <None Include="wwwroot\css\fonts\fjalla-one\fjalla-one-regular.woff2" />
+    <None Include="wwwroot\css\fonts\fjalla-one\stylesheet.css" />
+    <None Include="wwwroot\css\fonts\icons\icons.eot" />
+    <None Include="wwwroot\css\fonts\icons\icons.svg" />
+    <None Include="wwwroot\css\fonts\icons\icons.ttf" />
+    <None Include="wwwroot\css\fonts\icons\icons.woff" />
+    <None Include="wwwroot\css\fonts\open-sans\open-sans-bold-italic.eot" />
+    <None Include="wwwroot\css\fonts\open-sans\open-sans-bold-italic.ttf" />
+    <None Include="wwwroot\css\fonts\open-sans\open-sans-bold-italic.woff" />
+    <None Include="wwwroot\css\fonts\open-sans\open-sans-bold-italic.woff2" />
+    <None Include="wwwroot\css\fonts\open-sans\open-sans-bold.eot" />
+    <None Include="wwwroot\css\fonts\open-sans\open-sans-bold.ttf" />
+    <None Include="wwwroot\css\fonts\open-sans\open-sans-bold.woff" />
+    <None Include="wwwroot\css\fonts\open-sans\open-sans-bold.woff2" />
+    <None Include="wwwroot\css\fonts\open-sans\open-sans-condensed-bold.eot" />
+    <None Include="wwwroot\css\fonts\open-sans\open-sans-condensed-bold.ttf" />
+    <None Include="wwwroot\css\fonts\open-sans\open-sans-condensed-bold.woff" />
+    <None Include="wwwroot\css\fonts\open-sans\open-sans-condensed-bold.woff2" />
+    <None Include="wwwroot\css\fonts\open-sans\open-sans-condensed-light-italic.eot" />
+    <None Include="wwwroot\css\fonts\open-sans\open-sans-condensed-light-italic.ttf" />
+    <None Include="wwwroot\css\fonts\open-sans\open-sans-condensed-light-italic.woff" />
+    <None Include="wwwroot\css\fonts\open-sans\open-sans-condensed-light-italic.woff2" />
+    <None Include="wwwroot\css\fonts\open-sans\open-sans-condensed-light.eot" />
+    <None Include="wwwroot\css\fonts\open-sans\open-sans-condensed-light.ttf" />
+    <None Include="wwwroot\css\fonts\open-sans\open-sans-condensed-light.woff" />
+    <None Include="wwwroot\css\fonts\open-sans\open-sans-condensed-light.woff2" />
+    <None Include="wwwroot\css\fonts\open-sans\open-sans-italic.eot" />
+    <None Include="wwwroot\css\fonts\open-sans\open-sans-italic.ttf" />
+    <None Include="wwwroot\css\fonts\open-sans\open-sans-italic.woff" />
+    <None Include="wwwroot\css\fonts\open-sans\open-sans-italic.woff2" />
+    <None Include="wwwroot\css\fonts\open-sans\open-sans-light-italic.eot" />
+    <None Include="wwwroot\css\fonts\open-sans\open-sans-light-italic.ttf" />
+    <None Include="wwwroot\css\fonts\open-sans\open-sans-light-italic.woff" />
+    <None Include="wwwroot\css\fonts\open-sans\open-sans-light-italic.woff2" />
+    <None Include="wwwroot\css\fonts\open-sans\open-sans-light.eot" />
+    <None Include="wwwroot\css\fonts\open-sans\open-sans-light.ttf" />
+    <None Include="wwwroot\css\fonts\open-sans\open-sans-light.woff" />
+    <None Include="wwwroot\css\fonts\open-sans\open-sans-light.woff2" />
+    <None Include="wwwroot\css\fonts\open-sans\open-sans-regular.eot" />
+    <None Include="wwwroot\css\fonts\open-sans\open-sans-regular.ttf" />
+    <None Include="wwwroot\css\fonts\open-sans\open-sans-regular.woff" />
+    <None Include="wwwroot\css\fonts\open-sans\open-sans-regular.woff2" />
+    <None Include="wwwroot\css\fonts\open-sans\open-sans-semi-bold-italic.eot" />
+    <None Include="wwwroot\css\fonts\open-sans\open-sans-semi-bold-italic.ttf" />
+    <None Include="wwwroot\css\fonts\open-sans\open-sans-semi-bold-italic.woff" />
+    <None Include="wwwroot\css\fonts\open-sans\open-sans-semi-bold-italic.woff2" />
+    <None Include="wwwroot\css\fonts\open-sans\open-sans-semi-bold.eot" />
+    <None Include="wwwroot\css\fonts\open-sans\open-sans-semi-bold.ttf" />
+    <None Include="wwwroot\css\fonts\open-sans\open-sans-semi-bold.woff" />
+    <None Include="wwwroot\css\fonts\open-sans\open-sans-semi-bold.woff2" />
+  </ItemGroup>
+
+
+	<ItemGroup>
+    <PackageReference Include="BlazorDownloadFile" Version="2.3.1.1" />
+    <PackageReference Include="BlazorInputFileExtended" Version="1.3.17" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="6.0.2" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="6.0.2" PrivateAssets="all" />
+  </ItemGroup>
+
+</Project>

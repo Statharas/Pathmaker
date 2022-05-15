@@ -1,0 +1,9 @@
+<PageTitle>@CharacterController.ActiveCharacter?.Name</PageTitle>
+@code {
+    protected override Task OnInitializedAsync()
+    {
+        CharacterController.OnActiveCharacterChange += OnUpdate;
+        return Task.CompletedTask;
+    }
+    public void OnUpdate() => StateHasChanged();
+}

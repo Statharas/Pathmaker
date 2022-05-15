@@ -1,0 +1,24 @@
+﻿@using System.Text;
+@using System.IO;
+<div class="m-header-control">
+    <label class="m-header-control-button" for="Upload" style="cursor:pointer">
+        <span class="icon-file-upload">
+        </span>
+    </label>
+    <InputFile style="display:none" id="Upload" OnChange="LoadFile"/>
+    
+
+</div>
+
+@code {
+//<input id="Upload" style="display:none" type="file" @bind-value="File"/>
+    [Parameter]
+    public string FilePath { get; set; }
+    //[Parameter]
+    //public IBrowserFile File { get; set; }
+    private async Task LoadFile(InputFileChangeEventArgs e)
+    {
+        IO.File = await new StreamReader(e.File.OpenReadStream(512000000)).ReadToEndAsync();
+        CharacterController.SetRosterFromFile();
+    }
+}

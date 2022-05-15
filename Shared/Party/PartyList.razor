@@ -1,0 +1,19 @@
+@foreach (Character c in CharacterController.Characters)
+{
+    <PartyMemberIcon Character="@c"/>
+
+}
+<PartyMemberIconAdd/>
+
+@code {
+    protected override Task OnInitializedAsync()
+    {
+        CharacterController.Refresh += OnUpdate;
+        return Task.CompletedTask;
+    }
+    void OnUpdate() => StateHasChanged();
+    /*
+        <div class="m-display-image-wrapper m-display-intro-image avatarSizeSmall avatarMarginTop avatarNoRightMargin" style="background-color: rgb(85, 72, 34);">
+            <img class="m-display-image avatarSizeSmall" src="@c.Image" Character="@c" style="width: 100%; left: 50%; top: 50%;">
+        </div>*/
+}

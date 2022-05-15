@@ -1,0 +1,25 @@
+<section id="basics" class="l-section is-display-mode" tabindex="-1" style="outline: none; padding-top: 0" hidden="@IsInactive">
+    <div class="m-card">
+        
+        <CharacterContainerHeader @bind-Edit="@Edit" @bind-Minimized="@Minimized"/>
+        <CharacterContainerContent @bind-Edit="@Edit" @bind-Minimized="@Minimized" @bind-Character="@Character"/>
+    </div>
+</section>
+
+@code {
+
+    [Parameter]
+    public bool Edit { get; set; }
+    [Parameter]
+    public Character Character { get; set; } = new();
+    [Parameter]
+    public bool Minimized { get; set; } = false;
+
+    bool IsInactive => Character != CharacterController.ActiveCharacter;
+    protected override Task OnInitializedAsync()
+    {
+        CharacterController.OnActiveCharacterChange += OnUpdate;
+        return Task.CompletedTask;
+    }
+    public void OnUpdate() => StateHasChanged();
+}

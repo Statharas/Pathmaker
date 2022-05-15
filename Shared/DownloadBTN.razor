@@ -1,0 +1,22 @@
+﻿@using BlazorDownloadFile
+@using System.Text;
+<div class="m-header-control">
+    <button @onclick="DownloadCharacters" class="m-header-control-button js-header-control-export" tabindex="1">
+        <span class="icon-file-download">
+        </span>
+    </button>
+</div>
+
+@code {
+
+    [Inject]
+    public IBlazorDownloadFileService BlazorDownloadFileService { get; set; }
+
+    public async void DownloadCharacters() // => await IO.DownloadFile(CharacterController.CharactersSerialized(), JS);
+    {
+        byte[] data = Encoding.ASCII.GetBytes(CharacterController.CharactersSerialized());
+        await BlazorDownloadFileService.DownloadFile("Roster.Pathmaker", data,
+            data.Length, "application/octet-stream");
+    }
+
+}

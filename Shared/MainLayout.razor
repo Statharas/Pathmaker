@@ -1,0 +1,23 @@
+﻿@inherits LayoutComponentBase
+@using Pathmaker.Shared.CharacterContainer
+<Head></Head>
+
+<CharacterPageTitle/>
+<div style="padding-bottom: 5em"></div>
+@foreach (var c in CharacterController.Characters)
+{
+
+        <CharacterContainer Character="@c"/>
+    }
+
+@code
+{
+    protected override Task OnInitializedAsync()
+    {
+        CharacterController.Refresh += OnUpdate;
+        return Task.CompletedTask;
+    }
+
+    void OnUpdate() => StateHasChanged();
+
+}

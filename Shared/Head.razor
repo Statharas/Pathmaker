@@ -1,0 +1,101 @@
+﻿@using System.IO
+@using BlazorDownloadFile
+@using System.Text;
+@using Pathmaker.Shared.Party
+@inherits LayoutComponentBase
+
+<header class="m-header js-header is-display-mode">
+    <title>Pathmaker</title>
+    <div class="m-header-bar">
+        <PartyList/>
+        <div class="m-header-bar-area">
+            <div class="m-header-bar-area-spacer">
+                <p class="m-header-select-title hidden-xs hidden-sm">Character Select:</p>
+                <div class="m-header-select">
+                    <div class="m-character-select js-character-select is-display-mode">
+                        <ul class="m-character-select-list js-character-select-list">
+                            <li class="m-character-select-list-item js-character-select-list-item-0">
+                                <input id="new-character-GElJchjj2u" name="js-all-characters" class="js-character-select-list-item-input" type="radio" tabindex="1" data-character-select-index="0">
+                                <label for="new-character-GElJchjj2u" class="u-full-width js-character-select-list-item-label">
+                                    <span class="m-character-select-list-item-details">
+                                        <span class="m-character-select-list-item-name">New character</span>
+                                        <span class="m-character-select-list-item-class-level">No class No level</span>
+                                    </span>
+                                </label>
+                            </li>
+                            <li class="m-character-select-list-item js-character-select-list-item-1">
+                                <input id="izlara-drell-hEYP7Q9Kmm" name="js-all-characters" class="js-character-select-list-item-input" type="radio" tabindex="1" data-character-select-index="1">
+                                <label for="izlara-drell-hEYP7Q9Kmm" class="u-full-width js-character-select-list-item-label">
+                                    <span class="m-character-select-list-item-details">
+                                        <span class="m-character-select-list-item-demo">Demo</span>
+                                        <span class="m-character-select-list-item-name">Izlara Drell</span>
+                                        <span class="m-character-select-list-item-class-level">Wizard 12</span>
+                                    </span>
+                                </label>
+                            </li>
+                            <li class="m-character-select-list-item js-character-select-list-item-2">
+                                <input id="ravich-swiftcloak-R4OguOSuVw" name="js-all-characters" class="js-character-select-list-item-input" type="radio" tabindex="1" data-character-select-index="2">
+                                <label for="ravich-swiftcloak-R4OguOSuVw" class="u-full-width js-character-select-list-item-label">
+                                    <span class="m-character-select-list-item-details">
+                                        <span class="m-character-select-list-item-demo">Demo</span>
+                                        <span class="m-character-select-list-item-name">Ravich Swiftcloak</span>
+                                        <span class="m-character-select-list-item-class-level">Rogue 3, Fighter 3</span>
+                                    </span>
+                                </label>
+                            </li>
+                        </ul>
+                        <ul class="m-character-select-control">
+                            <li class="m-character-select-control-item">
+                                <a href="javascript:void(0)" class="m-character-select-control-link js-character-select-add" tabindex="1">
+                                    <span class="icon-add">
+                                    </span> <span class="m-character-select-control-link-text">Add New Character</span>
+                                </a>
+                            </li>
+                            <li class="m-character-select-control-item">
+                                <a href="javascript:void(0)" class="m-character-select-control-link js-character-select-remove" tabindex="1">
+                                    <span class="icon-remove">
+                                    </span> <span class="m-character-select-control-link-text">Remove Character</span>
+                                </a>
+                            </li>
+                            <li class="m-character-select-control-item">
+                                <a href="javascript:void(0)" class="m-character-select-control-link js-character-select-import" tabindex="1">
+                                    <span class="icon-file-upload">
+                                    </span> <span class="m-character-select-control-link-text">Import</span> <span class="m-character-select-control-link-shortcut hidden-xs hidden-sm hidden-md">ctrl + alt + i</span>
+                                </a>
+                            </li>
+                            <li class="m-character-select-control-item">
+                                <a href="javascript:void(0)" class="m-character-select-control-link js-character-select-export" tabindex="1">
+                                    <span class="icon-file-download">
+                                    </span> <span class="m-character-select-control-link-text">Export</span> <span class="m-character-select-control-link-shortcut hidden-xs hidden-sm hidden-md">ctrl + alt + e</span>
+                                </a>
+                            </li>
+                            <li class="m-character-select-control-item">
+                                <a href="javascript:void(0)" class="m-character-select-control-link js-character-select-update" tabindex="1">
+                                    <span class="icon-refresh">
+                                    </span> <span class="m-character-select-control-link-text">Replace</span> <span class="m-character-select-control-link-shortcut hidden-xs hidden-sm hidden-md">ctrl + alt + r</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <a href="javascript:void(0)" class="m-character-select-toggle js-character-select-toggle" tabindex="1">
+                        <span class="m-character-select-name js-character-select-name">Izlara Drell</span> <span class="m-character-select-class-level js-character-select-class-level">Wizard 12</span>
+                        <span class="m-character-select-arrow">
+                        </span>
+                    </a>
+                </div>
+                <DownloadBTN></DownloadBTN>
+                <UploadBTN></UploadBTN>
+            </div>
+        </div>
+    </div>
+</header>
+
+@code {
+    protected override Task OnInitializedAsync()
+    {
+        CharacterController.Refresh += OnUpdate;
+        return Task.CompletedTask;
+    }
+    void OnUpdate() => InvokeAsync(StateHasChanged);
+
+}

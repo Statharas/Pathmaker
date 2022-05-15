@@ -1,0 +1,19 @@
+.avatarSizeSmall {
+    max-width:5em;
+    max-height:5em;
+    min-width:5em;
+    min-height:5em;
+}
+.avatarMarginTop{
+    margin-top:5px;
+    margin-left:5px;
+}
+::file-selector-button {
+    display: none;
+}
+::-webkit-file-upload-button {
+    display: none;
+}
+input[type=file]::file-selector-button {
+    display: none;
+}

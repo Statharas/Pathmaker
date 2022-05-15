@@ -1,0 +1,31 @@
+@if(!Edit){
+    <h2 class="m-display-snippet-item">
+        @Title:
+        <span class="m-display-value"></span>
+    </h2>
+}
+@if (Edit)
+{
+    <h2 class="m-display-snippet-item">
+        @Title:
+        <input class="m-input-block-field u-full-width js-input-block-field" type="text">
+    </h2>
+}
+@code {
+
+    [Parameter]
+    public Character? Character { get; set; }
+    [Parameter]
+    public EventCallback<Character> CharacterChanged { get; set; }
+    
+    [Parameter]
+    public string Title { get; set; } = "";
+    [Parameter]
+    public EventCallback<string> TitleChanged { get; set; }
+
+    [Parameter]
+    public bool Edit { get; set; }
+    [Parameter]
+    public EventCallback<bool> EditChanged { get; set; }
+
+}

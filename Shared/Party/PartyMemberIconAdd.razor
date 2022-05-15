@@ -1,0 +1,17 @@
+<div class="m-display-image-wrapper m-display-intro-image avatarSizeSmall avatarMarginTop avatarNoRightMargin" style="background-color: rgb(85, 72, 34);">
+    <button @onclick="CreateCharacter" style="width:100%;height: 100%">
+        <div class="overlay">
+            <span class="icon-add" style="width: 100%; height: 100%; font-size: 3em; color: white;"></span>
+        </div>
+    </button>
+
+</div>
+
+@code {
+
+    [Parameter]
+    public Character Character { get; set; } = new();
+
+    void CreateCharacter() => CharacterController.CreateCharacter();
+
+}

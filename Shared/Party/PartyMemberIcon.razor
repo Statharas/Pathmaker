@@ -1,0 +1,14 @@
+<div class="m-display-image-wrapper m-display-intro-image avatarSizeSmall avatarMarginTop avatarNoRightMargin" style="background-color: rgb(85, 72, 34);">
+    <button @onclick="SetCharacterActive">
+        <img class="m-display-image avatarSizeSmall" src="@Character.Image" style="width: 100%; left: 50%; top: 50%;" alt="">
+    </button>
+</div>
+
+@code {
+
+    [Parameter]
+    public Character Character { get; set; } = new();
+
+    void SetCharacterActive() => CharacterController.SetCharacterActive(Character);
+
+}

@@ -1,0 +1,57 @@
+﻿<PointBuy Character="@Character" Edit="@Edit" />
+<div class="m-edit-box-item-12 m-edit-box-group">
+    <div class="m-edit-box-item-button-md">
+        <span style="text-align:center">
+        </span>
+    </div>
+    <div class="@Class">
+        <span style="text-align:center">
+
+        </span>
+    </div>
+    <div class="m-edit-box-item">
+        <span style="text-align:center">
+            BASE
+        </span>
+    </div>
+    <div class="@Class">
+        <span style="text-align:center">
+
+        </span>
+    </div>
+    <div class="m-edit-box-item">
+        <span style="text-align:center">
+            MISC
+        </span>
+    </div>
+    <div class="m-edit-box-item">
+        <span style="text-align:center">
+            TOTAL
+        </span>
+    </div>
+    <div class="m-edit-box-item">
+        <span style="text-align:center">
+            MOD
+        </span>
+    </div>
+</div>
+<BaseAbilityScore Character="@Character" Ability="Character.Scores.Strength" Edit="@Edit" />
+<BaseAbilityScore Character="@Character" Ability="Character.Scores.Dexterity" Edit="@Edit" />
+<BaseAbilityScore Character="@Character" Ability="Character.Scores.Constitution" Edit="@Edit" />
+<BaseAbilityScore Character="@Character" Ability="Character.Scores.Intelligence" Edit="@Edit" />
+<BaseAbilityScore Character="@Character" Ability="Character.Scores.Wisdom" Edit="@Edit" />
+<BaseAbilityScore Character="@Character" Ability="Character.Scores.Charisma" Edit="@Edit" />
+
+@code
+{
+    [Parameter]
+    public bool Edit { get; set; } = true;
+
+    [Parameter]
+    public Character Character { get; set; } = new();
+
+    [Parameter]
+    public AbilityScore AbilityScore { get; set; } = new();
+
+    private string Class => Edit ? "m-edit-box-item-button-md" : "m-edit-box-item-button-md hidden-lg";
+}

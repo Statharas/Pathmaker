@@ -1,0 +1,13 @@
+.avatarSizeSmall {
+    max-width:5em;
+    max-height:5em;
+    min-width:5em;
+    min-height:5em;
+}
+.avatarMarginTop{
+    margin-top:5px;
+    margin-left:5px;
+}
+.avatarNoRightMargin{
+    margin-right:0;
+}

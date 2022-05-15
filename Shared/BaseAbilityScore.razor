@@ -1,0 +1,64 @@
+﻿<div class="m-edit-box-item-12 m-edit-box-group">
+    <div class="m-edit-box-item-button-md" style="text-align:center">@ItemName</div>
+    <div class="m-edit-box-item-button-md @IsHidden">
+        <a @onclick="Remove" class="u-inline-with-input u-no-margin button button-large button-icon button-block js-input-block-increment button-primary">
+            <span class="icon-remove">
+            </span>
+        </a>
+    </div>
+    <div class="m-edit-box-item">
+        <div class="m-input-block js-input-block is-focus">
+            <input class="m-input-block-field u-full-width u-text-center js-input-block-field" disabled type="number" @bind="Ability.Value" input="value" />
+        </div>
+    </div>
+    <div class="m-edit-box-item-button-md @IsHidden">
+        <a @onclick="Add" class="u-inline-with-input u-no-margin button button-large button-icon button-block js-input-block-increment button-secondary">
+            <span class="icon-add">
+            </span>
+        </a>
+    </div>
+    <div class="m-edit-box-item">
+        <div class="m-input-block js-input-block is-focus">
+            <input class="m-input-block-field u-full-width u-text-center js-input-block-field" type="number" @bind="Ability.Misc" input="misc" />
+        </div>
+    </div>
+    <div class="m-edit-box-item">
+        <div class="m-input-block js-input-block is-focus">
+            <input class="m-input-block-field u-full-width u-text-center js-input-block-field" readonly="readonly" type="number" value="@Ability.Total" />
+        </div>
+    </div>
+    <div class="m-edit-box-item">
+        <div class="m-input-block js-input-block is-focus">
+            <input class="m-input-block-field u-full-width u-text-center js-input-block-field" readonly="readonly" type="text" value="@Ability.ModifierStringified" />
+        </div>
+    </div>
+</div>
+@code {
+
+    [Parameter, EditorRequired]
+    public Character Character { get; set; } = new();
+
+    [Parameter, EditorRequired]
+    public Ability Ability { get; set; } = new("str");
+    [Parameter]
+    public bool Edit { get; set; } = true;
+
+    private string ItemName => Ability.Name[..3].ToUpper();
+    private int Misc
+    {
+        get => Ability.Misc;
+        set => Ability.Misc = value;
+    }
+
+    private int Total => Ability.Total;
+
+    public void Add() => Ability.Add(1, Character.Scores.Points);
+    public void Remove() => Ability.Add(-1, Character.Scores.Points);
+    protected override Task OnInitializedAsync()
+    {
+        Ability.Refresh += OnUpdate;
+        return Task.CompletedTask;
+    }
+    public void OnUpdate() => StateHasChanged();
+    public string IsHidden=>Edit?"":"hidden-lg";
+}
