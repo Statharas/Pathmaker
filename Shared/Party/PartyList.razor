@@ -11,7 +11,7 @@
         CharacterController.Refresh += OnUpdate;
         return Task.CompletedTask;
     }
-    void OnUpdate() => StateHasChanged();
+    async void OnUpdate() => await InvokeAsync(StateHasChanged);
     /*
         <div class="m-display-image-wrapper m-display-intro-image avatarSizeSmall avatarMarginTop avatarNoRightMargin" style="background-color: rgb(85, 72, 34);">
             <img class="m-display-image avatarSizeSmall" src="@c.Image" Character="@c" style="width: 100%; left: 50%; top: 50%;">

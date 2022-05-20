@@ -18,6 +18,6 @@
         return Task.CompletedTask;
     }
 
-    void OnUpdate() => StateHasChanged();
+    async void OnUpdate() => await InvokeAsync(StateHasChanged);
 
 }
